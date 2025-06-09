@@ -77,19 +77,21 @@ function App() {
   const getWeekOfYear = (date: Date): number => {
     // Calculate the week number of the year for a given date
     const startOfYear = Date.UTC(date.getFullYear(), 0, 1);
+    const firstDayOfYear = new Date(startOfYear).getDay();
     const diff =
       Date.UTC(date.getFullYear(), date.getMonth(), date.getDay()) -
       startOfYear;
-    const oneWeek = 1000 * 60 * 60 * 24 * 7;
-    return Math.ceil(diff / oneWeek) + 1;
+    const oneDay = 1000 * 60 * 60 * 24;
+    const oneWeek = oneDay * 7;
+    return Math.ceil((diff + firstDayOfYear * oneDay) / oneWeek);
   };
 
   const setupTodayPlan = (today: Date) => {
-    const week = getWeekOfYear(today) + 1; // Start from week 1 (not 0)
+    let week = getWeekOfYear(today) + 1; // Start from week 1 (not 0)
+    if (week > 52) week -= 52; // Cap at week 52 for simplicity
     const wkPlan = biblePlan.find(item => item.ix.split(":")[0] === `${week}`);
     if (wkPlan) {
       const dayKey = days[today.getDay()] as DayKey;
-      console.log("Today's reading plan:", wkPlan[dayKey]);
       setTodayPlan(wkPlan[dayKey]);
     } else {
       console.log("Today's reading plan: Not found");
