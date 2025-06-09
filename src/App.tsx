@@ -125,11 +125,11 @@ function App() {
             <Typography variant="h4" component="h1" gutterBottom>
               Genre Reading Plan
             </Typography>
+            <ChooseDate value={date} onChange={newValue => setDate(newValue)} />
             <Stack direction="row" spacing={2} alignItems="center">
-              <ChooseDate
-                value={date}
-                onChange={newValue => setDate(newValue)}
-              />
+              <Typography variant="h5" component="h2" gutterBottom>
+                {todayPlan}
+              </Typography>
               <Link href={url2} target="_blank">
                 <LinkIcon />
               </Link>
