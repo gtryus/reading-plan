@@ -26,7 +26,7 @@ type DayKey = (typeof days)[number];
 
 function App() {
   const [date, setDate] = useState<Date | null>(null);
-  const [todayPlan, setTodayPlan] = useState("Mat. 1-2 ");
+  const [todayPlan, setTodayPlan] = useState("Mat. 1-2");
   const [responses, setResponses] = useState<string[]>([]);
   const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
