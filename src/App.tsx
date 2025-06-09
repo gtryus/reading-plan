@@ -1,6 +1,5 @@
 import { useMemo, useState, useEffect } from "react";
-import prayingLogo from "./assets/praying.png";
-import etbLogo from "/etb-sum-25-wb.png";
+import viteLogo from "/vite.svg";
 import "./App.css";
 import {
   Stack,
@@ -47,8 +46,12 @@ function App() {
     const m = /^([1-4]? ?[A-Za-z]+).? ?([0-9]+)/.exec(todayPlan.trim());
     const book = m?.[1];
     const chapters = m?.[2];
-    const findCode = bookNames.find(item => item.short.startsWith(book || "xyz"));
-    return bibleUrl.replace("{0}", findCode?.code || "xyz").replace("{1}", chapters || "xyz");
+    const findCode = bookNames.find(item =>
+      item.short.startsWith(book || "xyz")
+    );
+    return bibleUrl
+      .replace("{0}", findCode?.code || "xyz")
+      .replace("{1}", chapters || "xyz");
   }, [todayPlan]);
 
   const handleQuestionChange = (
@@ -108,14 +111,8 @@ function App() {
   return (
     <>
       <div>
-        <a href="https://GoExploreTheBible.com/adults" target="_blank">
-          <img src={etbLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a
-          href="https://explorethebible.lifeway.com/category/blog/adults/"
-          target="_blank"
-        >
-          <img src={prayingLogo} className="logo" alt="React logo" />
+        <a href="http://intothyword.org/" target="_blank">
+          <img src={viteLogo} className="logo" alt="Into Thy Word" />
         </a>
       </div>
 
