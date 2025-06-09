@@ -120,7 +120,7 @@ function App() {
         <ThemeProvider theme={theme}>
           <Stack spacing={2} direction="column" alignItems="center">
             <Typography variant="h4" component="h1" gutterBottom>
-              Praying Scripture from Psalms
+              Genre Reading Plan
             </Typography>
             <Stack direction="row" spacing={2} alignItems="center">
               <ChooseDate
