@@ -56,10 +56,11 @@ function App() {
 
   const handleQuestionChange = (
     date: Date | null,
+    ref: string | null,
     num: string,
     value: string
   ) => {
-    localStorage.setItem(`${date?.toLocaleDateString()}-${num}`, value); // Save question to local storage
+    localStorage.setItem(`${date?.getFullYear()}-${ref}-${num}`, value); // Save question to local storage
   };
 
   useEffect(() => {
@@ -67,12 +68,12 @@ function App() {
     const loadedResponses: string[] = [];
     for (let i = 0; i < questions.length; i++) {
       const response = localStorage.getItem(
-        `${date?.toLocaleDateString()}-${i}`
+        `${date?.getFullYear()}-${todayPlan}-${i}`
       );
       loadedResponses.push(response || "");
     }
     setResponses(loadedResponses);
-  }, [date]);
+  }, [date, todayPlan]);
 
   const getWeekOfYear = (date: Date): number => {
     // Calculate the week number of the year for a given date
@@ -142,7 +143,7 @@ function App() {
                 label={question}
                 value={responses[index] || ""}
                 onChange={value =>
-                  handleQuestionChange(date, index.toString(), value)
+                  handleQuestionChange(date, todayPlan, index.toString(), value)
                 }
               />
             ))}
