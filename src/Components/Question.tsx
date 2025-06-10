@@ -18,9 +18,7 @@ export default function Question(props: IProps) {
   };
 
   React.useEffect(() => {
-    if (props.value) {
-      setQuestion(props.value);
-    }
+      setQuestion(props.value || "");
   }, [props.value]);
 
   return (
