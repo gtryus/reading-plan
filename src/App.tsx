@@ -80,7 +80,7 @@ function App() {
     const startOfYear = Date.UTC(date.getFullYear(), 0, 1);
     const firstDayOfYear = new Date(startOfYear).getDay();
     const diff =
-      Date.UTC(date.getFullYear(), date.getMonth(), date.getDay()) -
+      Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) -
       startOfYear;
     const oneDay = 1000 * 60 * 60 * 24;
     const oneWeek = oneDay * 7;
